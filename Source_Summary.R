@@ -1,4 +1,6 @@
 Source_Summary <- function(data){
+  library(readxl)
+  library(openxlsx)
   setwd(dir)
   #Read paycode mapping file and Pay cycle file
   System_Paycode <- read_xlsx("Reference Tables/All Sites Pay Code Mappings .xlsx")
