@@ -1,5 +1,5 @@
 
-dir <- "C:/Users/gregl/OneDrive/Documents/MSH-MSQ-Payroll/"
+dir <- "J:/deans/Presidents/SixSigma/MSHS Productivity/Productivity/Analysis/FEMA Reimbursement/MSHS-FEMA-Reimbursement/"
 setwd(dir)
 
 ##Refresh Master#########################################################################
@@ -25,20 +25,20 @@ System_Summary <- readRDS("System_Summary.rds")
 #########################################################################################
 
 
-#Spread dataframe to show hours by PP
-Summary_Hours_PP <- System_Summary %>%
-  select(SITE,LOCATION,DPT.WRKD, DESCRIPTION, J.C, PAY.CODE,PAYCODE.MAPPING,HOURS.INCLUDE,PP.END.DATE,HOURS) %>%
-  spread(PP.END.DATE,HOURS)
-
-#Spread dataframe to show hours by PP
-Summary_Expense_PP <- System_Summary %>%
-  select(SITE,LOCATION,DPT.WRKD, DESCRIPTION, J.C, PAY.CODE,PAYCODE.MAPPING,HOURS.INCLUDE,PP.END.DATE,EXPENSE) %>%
-  spread(PP.END.DATE,EXPENSE)
-
-#Savey PP Summary tables as excel files
-setwd("C:/Users/gregl/OneDrive/Documents/MSH-MSQ-Payroll/Summary Tables")
-file <- paste0("MSH_MSQ_PP HOURS_",Sys.Date(),".xlsx")
-hs <- createStyle(textDecoration = "BOLD", fgFill = "#B2B3B2", fontColour = "#000000", halign = "center", border = "TopBottomLeftRight", borderColour = "#000000")
-df <- Summary_Hours_PP
-write.xlsx(df, file=file, startCol = c(1,1), startRow = c(1,1),
-           asTable = c(F,F), headerStyle = hs, borders = "all")
+# #Spread dataframe to show hours by PP
+# Summary_Hours_PP <- System_Summary %>%
+#   select(SITE,LOCATION,DPT.WRKD, DESCRIPTION, J.C, PAY.CODE,PAYCODE.MAPPING,HOURS.INCLUDE,PP.END.DATE,HOURS) %>%
+#   spread(PP.END.DATE,HOURS)
+# 
+# #Spread dataframe to show hours by PP
+# Summary_Expense_PP <- System_Summary %>%
+#   select(SITE,LOCATION,DPT.WRKD, DESCRIPTION, J.C, PAY.CODE,PAYCODE.MAPPING,HOURS.INCLUDE,PP.END.DATE,EXPENSE) %>%
+#   spread(PP.END.DATE,EXPENSE)
+# 
+# #Savey PP Summary tables as excel files
+# setwd("C:/Users/gregl/OneDrive/Documents/MSH-MSQ-Payroll/Summary Tables")
+# file <- paste0("MSH_MSQ_PP HOURS_",Sys.Date(),".xlsx")
+# hs <- createStyle(textDecoration = "BOLD", fgFill = "#B2B3B2", fontColour = "#000000", halign = "center", border = "TopBottomLeftRight", borderColour = "#000000")
+# df <- Summary_Hours_PP
+# write.xlsx(df, file=file, startCol = c(1,1), startRow = c(1,1),
+#            asTable = c(F,F), headerStyle = hs, borders = "all")

@@ -2,9 +2,7 @@ library(tidyverse)
 library(readxl)
 library(openxlsx)
 
-dir <- "C:/Users/gregl/OneDrive/Documents/MSH-MSQ-Payroll/"
 setwd(dir)
-
 
 #Read COA for department names
 COA <- read.csv("Reference Tables/COA.csv",header = T, stringsAsFactors = F)
