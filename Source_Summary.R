@@ -1,6 +1,6 @@
 Source_Summary <- function(data){
   library(readxl)
-  library(openxlsx)
+  
   setwd(dir)
   #Read paycode mapping file and Pay cycle file
   System_Paycode <- read_xlsx("Reference Tables/All Sites Pay Code Mappings .xlsx")
@@ -29,11 +29,10 @@ Source_Summary <- function(data){
     select(PAYROLL,WRKD.LOCATION,HOME.LOCATION,DPT.WRKD,DPT.HOME,WRKD.DESCRIPTION,HOME.DESCRIPTION,J.C,J.C.DESCRIPTION,PAY.CODE,End.Date,HOURS,EXPENSE) %>%
     group_by(PAYROLL,WRKD.LOCATION,HOME.LOCATION,DPT.WRKD,DPT.HOME,WRKD.DESCRIPTION,HOME.DESCRIPTION,J.C,J.C.DESCRIPTION,PAY.CODE,End.Date) %>%
     summarize(HOURS = sum(HOURS, na.rm = T),EXPENSE = sum(EXPENSE, na.rm = T))
-  colnames(Summary)[12] <- "PP.END.DATE"
+  colnames(Summary)[11] <- "PP.END.DATE"
   
   #Bring in paycode mapping and hours included columns
   Site_Summary <- left_join(Summary,System_Paycode) %>%
-    select(c(1:11),18,19,c(12:14))
-  colnames(Site_Summary)[12:13] <- c("PAYCODE.MAPPING","HOURS.INCLUDE")
-  return(Site_Summary)
+    select(c(1:10),17,18,c(11:13))
+  colnames(Site_Summary)[11:12] <- c("PAYCODE.MAPPING","HOURS.INCLUDE")
 }
