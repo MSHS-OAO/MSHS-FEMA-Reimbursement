@@ -7,7 +7,7 @@ library(dplyr)
 # dir <- "J:/deans/Presidents/SixSigma/MSHS Productivity/Productivity/Analysis/FEMA Reimbursement/MSHS-FEMA-Reimbursement/"
 dir_ref <- paste0(dir, "MSBIB Reference/")
 
-data_MSBI_MSB <- readRDS(paste0(dir,"Reference Tables/data_MSBI_MSB.rds"))
+data_MSBI_MSB <- readRDS(paste0(dir, "Reference Tables/data_MSBI_MSB.rds"))
 
 # Inputs/Imports ----------------------------------------------------------
 
@@ -132,5 +132,7 @@ payroll_data_process$END.DATE <- paste0(
 data_MSBI_MSB <- payroll_data_process
 
 # Outputs/Exports ---------------------------------------------------------
-rm(list = setdiff(ls(), c("data_MSH_MSQ", "data_MSBI_MSB", "data_MSSL_MSW",
-                          "data_Rightsourcing", "dir")))
+rm(list = setdiff(ls(), c(
+  "data_MSH_MSQ", "data_MSBI_MSB", "data_MSSL_MSW",
+  "data_Rightsourcing", "dir"
+)))
