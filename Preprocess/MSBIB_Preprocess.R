@@ -1,14 +1,12 @@
-
 # Intro -------------------------------------------------------------------
 
 # Libraries Setup and Memory Clear-----------------------------------------
 
-rm(list = ls()) # clearing out the memory
 library(dplyr)
 library(readxl) # needed for import
 
 # home location for working directory folder
-dir <- "J:/deans/Presidents/SixSigma/MSHS Productivity/Productivity/Analysis/FEMA Reimbursement/MSHS-FEMA-Reimbursement"
+dir <- "J:/deans/Presidents/SixSigma/MSHS Productivity/Productivity/Analysis/FEMA Reimbursement/MSHS-FEMA-Reimbursement/"
 setwd(dir)
 dir_ref <- paste0(dir, "MSBIB Reference/")
 dir_raw <- paste0(dir, "MSBIB Raw/")
