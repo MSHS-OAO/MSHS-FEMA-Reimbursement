@@ -30,4 +30,4 @@ data_MSH_MSQ <- data_MSH_MSQ %>%
          HOME.DESCRIPTION = rep(NA,nrow(data_MSH_MSQ))) 
 colnames(data_MSH_MSQ)[c(3,20,21)] <- c("DPT.HOME", "WRKD.LOCATION","WRKD.DESCRIPTION")
 
-rm(list=setdiff(ls(), c("data_MSH_MSQ","dir")))
+rm(list=setdiff(ls(), c("data_MSH_MSQ","data_MSBI_MSB","data_MSSL_MSW","data_Rightsourcing","dir")))
