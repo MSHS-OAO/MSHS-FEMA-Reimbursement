@@ -3,13 +3,11 @@
 # Libraries Setup and Memory Clear-----------------------------------------
 
 library(dplyr)
-library(readxl) # needed for import
 
-# home location for working directory folder
-dir <- "J:/deans/Presidents/SixSigma/MSHS Productivity/Productivity/Analysis/FEMA Reimbursement/MSHS-FEMA-Reimbursement/"
-setwd(dir)
+# dir <- "J:/deans/Presidents/SixSigma/MSHS Productivity/Productivity/Analysis/FEMA Reimbursement/MSHS-FEMA-Reimbursement/"
 dir_ref <- paste0(dir, "MSBIB Reference/")
-dir_raw <- paste0(dir, "MSBIB Raw/")
+
+data_MSBI_MSB <- readRDS(paste0(dir,"Reference Tables/data_MSBI_MSB.rds"))
 
 # Inputs/Imports ----------------------------------------------------------
 
@@ -28,32 +26,13 @@ loc_desc <- read_excel(
 jc_dict <- read_excel(
   paste0(dir_ref, "MSBI Job Code Dictionary.xlsx")
 )
-payroll_data_orig_1 <- read_excel(
-  paste0(dir_raw, "MSBI_JAN_AUG_19.xlsx")
-)
-payroll_data_orig_2 <- read_excel(
-  paste0(dir_raw, "MSBI_SEP_19 to APR.xlsx")
-)
-# change the raw reading to be the same as Greg's style of reading all files?
-
-payroll_data_orig <- rbind(payroll_data_orig_1, payroll_data_orig_2)
-
-payroll_data_orig_1 <- NULL
-payroll_data_orig_2 <- NULL
 
 # Data Transformations ----------------------------------------------------
 
-payroll_data_process <- payroll_data_orig
-
-# need to restrict dates to a specific time frame?
-
-payroll_data_process$source <- "MSBIB"
+payroll_data_process <- data_MSBI_MSB
 
 payroll_data_process$HD_CO <- substr(payroll_data_process$HD_COFT, 1, 2)
 payroll_data_process$WD_CO <- substr(payroll_data_process$WD_COFT, 1, 2)
-
-payroll_data_process$WRKD.SITE <- "MSBIB"
-payroll_data_process$HOME.SITE <- "MSBIB"
 
 payroll_data_process$DEPT.WRKD <- paste0(
   payroll_data_process$WD_COFT, payroll_data_process$WD_Location,
@@ -153,4 +132,5 @@ payroll_data_process$END.DATE <- paste0(
 data_MSBI_MSB <- payroll_data_process
 
 # Outputs/Exports ---------------------------------------------------------
-rm(list = setdiff(ls(), c("data_MSBI_MSB", "dir")))
+rm(list = setdiff(ls(), c("data_MSH_MSQ", "data_MSBI_MSB", "data_MSSL_MSW",
+                          "data_Rightsourcing", "dir")))
