@@ -1,3 +1,8 @@
+Source_Func <- function(x){
+  source(x)
+  setwd(paste0(dir,"Preprocess/"))
+}
+
 Source_Summary <- function(data){
   library(readxl)
   
