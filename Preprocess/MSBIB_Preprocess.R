@@ -122,6 +122,8 @@ payroll_data_process <- payroll_data_process %>%
     J.C.DESCRIPTION = "Position Code Description"
   )
 
+payroll_data_process$PAY.CODE <- as.character(payroll_data_process$PAY.CODE)
+
 payroll_data_process$END.DATE <- paste0(
   substr(payroll_data_process$END.DATE, 1, 2), "/",
   substr(payroll_data_process$END.DATE, 3, 4), "/",
@@ -132,7 +134,5 @@ payroll_data_process$END.DATE <- paste0(
 data_MSBI_MSB <- payroll_data_process
 
 # Outputs/Exports ---------------------------------------------------------
-# rm(list = setdiff(ls(), c(
-#   "data_MSH_MSQ", "data_MSBI_MSB", "data_MSSL_MSW",
-#   "data_Rightsourcing", "dir"
-# )))
+
+rm(coft_desc, jc_dict, loc_desc, payroll_data_process, simp_loc, dir_ref)
