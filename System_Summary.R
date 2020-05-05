@@ -7,10 +7,12 @@ setwd(paste0(dir,"Preprocess"))
 folder_preprocess <- paste0(dir,"Preprocess")
 #create list of preprocessed files
 preprocess <- list.files(path=folder_preprocess)
-System_Source <- lapply(preprocess,function(x)source(x))
-#apply summary code to each preprocessed file
+#bring in functions to run preprocess scripts and summarize them
 source(paste0(dir,"Source_Summary.R"))
-System_Preprocess <- list(MSH_MSQ = data_MSH_MSQ)
+#Run source function
+System_Source <- lapply(preprocess,function(x)Source_Func(x))
+System_Preprocess <- list(MSH_MSQ = data_MSH_MSQ, Rightsourcing = data_Rightsourcing)
+#summarize all preprocessed dataframes
 System_Summary_List <- lapply(System_Preprocess, function(x)Source_Summary(x))
 #bind all summary tables into system summary
 System_Summary = do.call("rbind",System_Summary_List)
