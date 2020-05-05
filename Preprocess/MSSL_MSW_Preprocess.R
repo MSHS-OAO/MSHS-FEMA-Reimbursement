@@ -1,4 +1,4 @@
-dir <- "J:/deans/Presidents/SixSigma/MSHS Productivity/Productivity/Analysis/FEMA Reimbursement/MSHS-FEMA-Reimbursement"
+#dir <- "J:/deans/Presidents/SixSigma/MSHS Productivity/Productivity/Analysis/FEMA Reimbursement/MSHS-FEMA-Reimbursement"
 setwd(dir)
 
 # Load Libriaries ---------------------------------------------------------
@@ -73,7 +73,8 @@ colnames(data_MSSL_MSW)[which('Employee ID'==colnames(data_MSSL_MSW))] <- "LIFE"
 
 # Format Columns ----------------------------------------------------------
 data_MSSL_MSW <- data_MSSL_MSW %>%
-  mutate(END.DATE = as.Date(END.DATE, format = "%m/%d/%Y"))
+  mutate(END.DATE = as.Date(END.DATE, format = "%m/%d/%Y"),
+         PAY.CODE = as.character(PAY.CODE))
 
 # Clear Environment -------------------------------------------------------
-#rm(list=setdiff(ls(), c("data_MSH_MSQ","data_MSBI_MSB","data_MSSL_MSW","data_Rightsourcing","dir")))
+rm(folder_references, dict_COFTloc, dict_jobcodes, dict_paycycle_alt, dict_site, format_biweekly_paycycle)
