@@ -80,7 +80,7 @@ data_Rightsourcing <- right %>%
     HOURS = Hours,
     EXPENSE = Spend) %>%
   filter(END.DATE > as.Date("01/01/2019", format = "%m/%d/%Y")) %>%
-  select(c(7,22,28:38))
+  select(c(7,22,28:38)) 
 
 rm(right,JCList,COA,DepDict,Right_Coft,HOME.DESCRIPTION,HOME.LOCATION,i,WRKD.DESCRIPTION,WRKD.LOCATION)
 
