@@ -26,17 +26,6 @@ setwd(dir)
 System_Summary <- readRDS("System_Summary.rds")
 #########################################################################################
 
-
-# #Spread dataframe to show hours by PP
-# Summary_Hours_PP <- System_Summary %>%
-#   select(SITE,LOCATION,DPT.WRKD, DESCRIPTION, J.C, PAY.CODE,PAYCODE.MAPPING,HOURS.INCLUDE,PP.END.DATE,HOURS) %>%
-#   spread(PP.END.DATE,HOURS)
-# 
-# #Spread dataframe to show hours by PP
-# Summary_Expense_PP <- System_Summary %>%
-#   select(SITE,LOCATION,DPT.WRKD, DESCRIPTION, J.C, PAY.CODE,PAYCODE.MAPPING,HOURS.INCLUDE,PP.END.DATE,EXPENSE) %>%
-#   spread(PP.END.DATE,EXPENSE)
-# 
 # #Savey PP Summary tables as excel files
 # setwd("C:/Users/gregl/OneDrive/Documents/MSH-MSQ-Payroll/Summary Tables")
 # file <- paste0("MSH_MSQ_PP HOURS_",Sys.Date(),".xlsx")
