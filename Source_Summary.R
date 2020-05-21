@@ -40,6 +40,7 @@ Source_Summary <- function(data){
   #Bring in paycode mapping and hours included columns
   Site_Summary <- left_join(Summary,System_Paycode) %>%
     select(c(1:10),16,17,19,c(11:13))
+  Site_Summary <- Site_Summary %>% distinct()
   #colnames(Site_Summary)[11:12] <- c("PAYCODE.MAPPING","HOURS.INCLUDE")
   return(Site_Summary)
 }
