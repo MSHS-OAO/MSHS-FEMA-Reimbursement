@@ -8,7 +8,7 @@ Source_Summary <- function(data){
   
   setwd(dir)
   #Read paycode mapping file and Pay cycle file
-  System_Paycode <- read_xlsx("Reference Tables/All Sites Pay Code Mappings .xlsx")
+  System_Paycode <- read_xlsx("Reference Tables/All Sites Pay Code Mappings.xlsx")
   colnames(System_Paycode) <- c("PAY.CODE","PAY.CODE.NAME","PAY.CODE.MAPPING","INCLUDE.HOURS","INCLUDE.EXPENSES","JODI","JODI.NO.PTO")
   System_Paycode <- System_Paycode %>%
     mutate(PAY.CODE = str_trim(PAY.CODE)) 
